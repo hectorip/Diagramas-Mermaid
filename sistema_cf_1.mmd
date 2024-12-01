@@ -1,0 +1,27 @@
+graph TD
+    %% Componentes principales del frontend
+    Client[Cliente Web]
+
+    %% Servicios principales
+    API[API Backend - Django/Rails/Laravel/NodeJS]
+    DB[(Base de Datos - Relacional )]
+    Storage[Almacenamiento - Object Storage]
+
+    %% Interacciones del usuario
+    Client -->|Autenticación/Datos| API
+    Client -->|Ver Videos| Storage
+
+    %% Conexiones del backend
+    API -->|Consultas| DB
+    API -->|Gestión Archivos| Storage
+
+    %% Detalles de servicios y almacenamiento
+    subgraph Almacenamiento
+        Videos[Videos MP4]
+        Images[Imágenes]
+        Documents[Documentos PDF]
+    end
+
+    Storage --- Videos
+    Storage --- Images
+    Storage --- Documents

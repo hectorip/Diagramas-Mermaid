@@ -1,0 +1,90 @@
+erDiagram
+    USUARIOS ||--o{ INSCRIPCION_CURSO : "se inscribe"
+    USUARIOS ||--o{ PROGRESO_LECCION : "registra"
+    USUARIOS ||--o{ INSCRIPCION_RUTA : "sigue"
+    USUARIOS {
+        int id PK
+        string nombre
+        string email
+        string password_hash
+        datetime ultima_actividad
+        string rol
+    }
+
+    CURSOS ||--|{ LECCIONES : "contiene"
+    CURSOS ||--o{ INSCRIPCION_CURSO : "tiene"
+    CURSOS ||--o{ CURSO_RUTA : "pertenece"
+    CURSOS {
+        int id PK
+        string titulo
+        string descripcion
+        string nivel
+        string categoria
+        int instructor_id FK
+        float duracion_total
+        datetime fecha_creacion
+    }
+
+    LECCIONES ||--o{ PROGRESO_LECCION : "tiene"
+    LECCIONES {
+        int id PK
+        int curso_id FK
+        string titulo
+        string descripcion
+        int orden
+        string tipo "video|texto"
+        string contenido
+        float duracion
+        string url_video
+    }
+
+    RUTAS_APRENDIZAJE ||--|{ CURSO_RUTA : "contiene"
+    RUTAS_APRENDIZAJE ||--o{ INSCRIPCION_RUTA : "tiene"
+    RUTAS_APRENDIZAJE {
+        int id PK
+        string nombre
+        string descripcion
+        string nivel
+        string categoria
+        datetime fecha_creacion
+    }
+
+    CURSO_RUTA {
+        int ruta_id FK
+        int curso_id FK
+        int orden
+    }
+
+    INSCRIPCION_CURSO {
+        int usuario_id FK
+        int curso_id FK
+        datetime fecha_inscripcion
+        float progreso_general
+        datetime ultimo_acceso
+    }
+
+    INSCRIPCION_RUTA {
+        int usuario_id FK
+        int ruta_id FK
+        datetime fecha_inscripcion
+        float progreso_general
+        datetime ultimo_acceso
+    }
+
+    PROGRESO_LECCION {
+        int usuario_id FK
+        int leccion_id FK
+        boolean completada
+        datetime fecha_ultima_vista
+        float tiempo_visto
+        string estado "no_iniciado|en_progreso|completado"
+    }
+
+    RECOMENDACIONES {
+        int id PK
+        int usuario_id FK
+        int contenido_id
+        string tipo_contenido "curso|ruta"
+        float score_relevancia
+        datetime fecha_generacion
+    }
