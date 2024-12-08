@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Almacenamiento de Datos</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.css" id="theme">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/lib/css/zenburn.css">
+
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/css/print/pdf.css' : 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section>
+                <h1>Almacenamiento de Datos</h1>
+                </p>
+            </section>
+
+
+            <section>
+                <h2>Almacenamiento en Bloques</h2>
+                <ul>
+                    <li>Definición: Datos divididos en bloques con direcciones únicas.</li>
+                    <li>Características: Bajo nivel, acceso directo, alto rendimiento.</li>
+                </ul>
+            </section>
+            <section></section>
+            <img src="" alt="Diagrama de Bloques">
+            </section>
+            <section>
+                <h2>Casos de Uso - Bloques</h2>
+                <ul>
+                    <li>Bases de datos transaccionales (OLTP)</li>
+                    <li>Sistemas de archivos de alto rendimiento</li>
+                    <li>Máquinas virtuales (VMs)</li>
+                </ul>
+                <img src="https://i.imgur.com/O1mQk70.png" alt="Aplicación de Base de Datos">
+            </section>
+
+            <section>
+                <h2>Ventajas - Bloques</h2>
+                <ul>
+                    <li>Rendimiento y latencia óptimos</li>
+                    <li>Flexibilidad en la gestión de datos</li>
+                    <li>Ideal para aplicaciones que requieren acceso aleatorio</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Desventajas - Bloques</h2>
+                <ul>
+                    <li>Complejidad en la gestión a gran escala</li>
+                    <li>Metadatos limitados</li>
+                    <li>No es ideal para datos no estructurados</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Almacenamiento de Archivos</h2>
+                <ul>
+                    <li>Definición: Datos organizados en archivos jerárquicos con nombres.</li>
+                    <li>Características: Alto nivel, acceso secuencial, portabilidad.</li>
+                </ul>
+                <img src="https://i.imgur.com/p80L71j.png" alt="Diagrama de Archivos">
+            </section>
+
+            <section>
+                <h2>Casos de Uso - Archivos</h2>
+                <ul>
+                    <li>Compartir archivos y documentos</li>
+                    <li>Almacenamiento de contenido multimedia</li>
+                    <li>Aplicaciones web</li>
+                </ul>
+                <img src="https://i.imgur.com/j2Ol1nB.png" alt="Unidad de Red Compartida">
+            </section>
+
+            <section>
+                <h2>Ventajas - Archivos</h2>
+                <ul>
+                    <li>Fácil de usar y comprender</li>
+                    <li>Amplia compatibilidad y portabilidad</li>
+                    <li>Gestión de metadatos más rica que bloques</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Desventajas - Archivos</h2>
+                <ul>
+                    <li>Rendimiento limitado para acceso aleatorio</li>
+                    <li>Escalabilidad limitada en comparación con objetos</li>
+                    <li>Puede ser ineficiente para grandes conjuntos de datos</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Almacenamiento de Objetos</h2>
+                <ul>
+                    <li>Definición: Datos almacenados como objetos con metadatos enriquecidos.</li>
+                    <li>Características: Escalabilidad, durabilidad, acceso a través de API.</li>
+                </ul>
+                <img src="https://i.imgur.com/t8mJv1M.png" alt="Diagrama de Objetos">
+            </section>
+
+            <section>
+                <h2>Casos de Uso - Objetos</h2>
+                <ul>
+                    <li>Almacenamiento en la nube</li>
+                    <li>Big Data y análisis</li>
+                    <li>Aplicaciones móviles</li>
+                    <li>Internet de las Cosas (IoT)</li>
+                </ul>
+                <img src="https://i.imgur.com/5bRySm8.png" alt="Almacenamiento en la Nube">
+            </section>
+
+            <section>
+                <h2>Ventajas - Objetos</h2>
+                <ul>
+                    <li>Escalabilidad ilimitada</li>
+                    <li>Durabilidad y disponibilidad</li>
+                    <li>Metadatos enriquecidos para una mejor gestión</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Desventajas - Objetos</h2>
+                <ul>
+                    <li>Rendimiento puede ser menor para acceso aleatorio frecuente</li>
+                    <li>Mayor complejidad en la implementación</li>
+                    <li>No es ideal para aplicaciones que requieren acceso a nivel de bloque</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Comparación</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Bloques</th>
+                            <th>Archivos</th>
+                            <th>Objetos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nivel de abstracción</td>
+                            <td>Bajo</td>
+                            <td>Medio</td>
+                            <td>Alto</td>
+                        </tr>
+                        <tr>
+                            <td>Acceso</td>
+                            <td>Directo</td>
+                            <td>Secuencial</td>
+                            <td>API</td>
+                        </tr>
+                        <tr>
+                            <td>Escalabilidad</td>
+                            <td>Limitada</td>
+                            <td>Media</td>
+                            <td>Ilimitada</td>
+                        </tr>
+                        <tr>
+                            <td>Metadatos</td>
+                            <td>Limitados</td>
+                            <td>Básicos</td>
+                            <td>Enriquecidos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>Eligiendo el Almacenamiento Adecuado</h2>
+                <ul>
+                    <li>Consideraciones clave: tipo de datos, acceso, escalabilidad, costo.</li>
+                    <li>Ejemplos prácticos: ¿Qué almacenamiento usarías para...?</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Tendencias en Almacenamiento</h2>
+                <ul>
+                    <li>Almacenamiento definido por software (SDS)</li>
+                    <li>Almacenamiento en la nube híbrida</li>
+                    <li>Nuevos tipos de medios (ej. memoria persistente)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Mejores Prácticas</h2>
+                <ul>
+                    <li>Optimizar el rendimiento</li>
+                    <li>Garantizar la seguridad</li>
+                    <li>Monitorear y gestionar el almacenamiento</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Recursos Adicionales</h2>
+                <ul>
+                    <li><a href="https://www.snia.org/educational-library/ethernet-storage-forum">SNIA Ethernet Storage
+                            Forum</a></li>
+                    <li><a href="https://docs.aws.amazon.com/es_es/AmazonS3/latest/userguide/Welcome.html">Documentación
+                            de Amazon S3</a></li>
+                    <li><a href="https://www.openstack.org/swift/">OpenStack Swift</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Preguntas y Respuestas</h2>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.js"></script>
+
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            hash: true,
+            dependencies: [
+                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/marked.js' },
+                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.js' },
+                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.js', async: true },
+                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+            ]
+        });
+    </script>
+</body>
+
+</html>

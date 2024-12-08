@@ -1,0 +1,39 @@
+flowchart TD
+    subgraph Cliente["Cliente/Servidor"]
+        App["Aplicación"]
+        FS["Sistema de Archivos"]
+    end
+
+    subgraph Red["Red de Storage"]
+        SAN["Red de Área de Storage (SAN)"]
+    end
+
+    subgraph Storage["Sistema de Block Storage"]
+        Controller["Controlador de Storage"]
+        Cache["Cache"]
+        
+        subgraph Discos["Array de Discos"]
+            RAID["Configuración RAID"]
+            D1["Disco 1"]
+            D2["Disco 2"]
+            D3["Disco 3"]
+            D4["Disco 4"]
+        end
+    end
+
+    App --> FS
+    FS --> SAN
+    SAN --> Controller
+    Controller --> Cache
+    Cache --> RAID
+    RAID --> D1
+    RAID --> D2
+    RAID --> D3
+    RAID --> D4
+
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef storage fill:#e1f3d8,stroke:#333,stroke-width:2px;
+    classDef network fill:#dae8fc,stroke:#333,stroke-width:2px;
+    
+    class Controller,Cache,RAID,D1,D2,D3,D4 storage;
+    class SAN network;

@@ -1,0 +1,23 @@
+graph LR
+    subgraph "Aplicaciones de Entrada"
+        CMS[CMS Admin\nGestión de Contenido]
+        Upload[Aplicación de\nSubida de Videos]
+    end
+
+    subgraph "Almacenamiento y Procesamiento"
+        S3[S3 - Almacenamiento\nde Videos] --> MP[Procesador\nde Metadatos]
+        MP --> DB[(Base de Datos\nPrincipal)]
+        DB --> Cache[(Cache\nRedis)]
+        
+        CMS --> S3
+        Upload --> S3
+        CMS --> DB
+    end
+
+    subgraph "Entrega de Contenido"
+        CDN{CDN Global} --> Player[App Reproductor\nWeb/Mobile]
+        Cache --> CDN
+        S3 --> CDN
+        Player --> TS[(BD Time Series\nEngagement)]
+        DB --> Player
+    end

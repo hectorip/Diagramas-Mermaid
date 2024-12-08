@@ -1,3 +1,4 @@
+```mermaid
 flowchart TD;
     4[Usuario]
     1[Agente con herramientas]
@@ -8,8 +9,9 @@ flowchart TD;
     1-->|1: Reflexiona|1;
     1-->|2: Plan para atender el mensaje: .Conseguir info faltante \ Usar agente de cotizaones \ Formatear respuesta \ contestar|1;
     1-->|Consigue: fecha de salida \ fecha de regreso \ lugar de salida|3;
-    3-->|Pide infomación hasta completarla|4;
+    3-->|Pide información hasta completarla|4;
     1-->|Pide cotización|2;
     2-->API_APP;
     1-->|Pregunta del usuario|5;
     3-->3;
+```
