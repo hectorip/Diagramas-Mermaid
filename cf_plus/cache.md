@@ -28,4 +28,3 @@ graph TD
         StorageUsos[Contenido:<br>- Videos<br>- Imágenes<br>- Documentos]
     end
 ```
-
