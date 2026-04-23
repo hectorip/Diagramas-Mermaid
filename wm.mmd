@@ -1,0 +1,75 @@
+flowchart TB
+    subgraph Clients ["Clientes y Asesores"]
+        RM["Relationship Manager"]
+        CLIENT["Cliente HNW/UHNW"]
+        FA["Asesor Financiero"]
+    end
+
+    subgraph CORE ["Core Bancario - Wealth Management"]
+        direction TB
+        PORT["Gestión de Portafolios"]
+        INV["Motor de Inversiones"]
+        RISK_MGT["Gestión de Riesgo"]
+        CLIENT_MGT["Gestión de Clientes"]
+        subgraph Products ["Productos de Inversión"]
+            MUTUAL["Fondos Mutuos"]
+            STOCKS["Acciones"]
+            BONDS["Bonos"]
+            ALT["Inversiones Alternativas"]
+            STRUCT["Productos Estructurados"]
+        end
+    end
+
+    subgraph Markets ["Mercados y Proveedores"]
+        EXCHANGE["Bolsas de Valores"]
+        BROKER["Brokers"]
+        CUSTODY["Custodios Globales"]
+        DATA["Proveedores de Datos"]
+        direction TB
+    end
+
+    subgraph Support ["Sistemas de Soporte"]
+        CRM["CRM Private Banking"]
+        COMPLIANCE["Compliance y KYC"]
+        TAX["Planificación Fiscal"]
+        REPORT["Reportes y Analytics"]
+        ESTATE["Planificación Patrimonial"]
+    end
+
+    %% Conexiones desde Clientes y Asesores
+    RM --> PORT
+    RM --> CLIENT_MGT
+    FA --> PORT
+    CLIENT --> CRM
+
+    %% Conexiones del Core
+    PORT <--> INV
+    INV <--> RISK_MGT
+    CLIENT_MGT <--> PORT
+    INV <--> Products
+    RISK_MGT <--> Products
+
+    %% Conexiones con Mercados
+    INV <--> EXCHANGE
+    INV <--> BROKER
+    PORT <--> CUSTODY
+    INV <--> DATA
+
+    %% Conexiones con Sistemas de Soporte
+    CLIENT_MGT <--> CRM
+    PORT <--> COMPLIANCE
+    CLIENT_MGT <--> TAX
+    PORT <--> REPORT
+    CLIENT_MGT <--> ESTATE
+
+    %% Estilos
+    classDef clients fill:#1a237e,stroke:#7986cb,color:#fff
+    classDef core fill:#1b5e20,stroke:#81c784,color:#fff
+    classDef markets fill:#e65100,stroke:#ffb74d,color:#fff
+    classDef support fill:#4a148c,stroke:#ba68c8,color:#fff
+    classDef products fill:#1b5e20,stroke:#81c784,color:#fff,stroke-dasharray: 5 5
+
+    class RM,CLIENT,FA clients
+    class PORT,INV,RISK_MGT,CLIENT_MGT,MUTUAL,STOCKS,BONDS,ALT,STRUCT core
+    class EXCHANGE,BROKER,CUSTODY,DATA markets
+    class CRM,COMPLIANCE,TAX,REPORT,ESTATE support

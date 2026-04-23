@@ -1,0 +1,60 @@
+   K1 & K2 & K3 ---|Coordinación| ZK
+    K1 & K2 & K3 --> KC
+    K1 & K2 & K3 --> KS
+    KC -->|Sink Connector| TS
+    KS -->|Agregaciones| TS
+    TS --> M1 & M2
+
+    classDef sensor fill:#d1f2eb
+    classDef gateway fill:#fadbd8
+    classDef kafka fill:#f9e79f
+    classDef process fill:#d6eaf8
+    classDef storage fill:#d5f5e3
+    classDef monitoring fill:#f5cba7
+
+    class S1,S2,S3,Sn sensor
+    class G1,G2,Gn gateway
+    class K1,K2,K3,ZK kafka
+    class KC,KS process
+    class TS storage
+    class M1,M2 monitoringflowchart LR
+    subgraph Sensores
+        S1[Sensor 1]
+        S2[Sensor 2]
+        S3[Sensor 3]
+        Sn[Sensor n]
+    end
+
+    subgraph "Edge Gateways"
+        G1[Gateway 1]
+        G2[Gateway 2]
+        Gn[Gateway n]
+    end
+
+    subgraph "Infraestructura Central"
+        subgraph "Kafka Cluster"
+            K1[Broker 1]
+            K2[Broker 2]
+            K3[Broker 3]
+            ZK[ZooKeeper]
+        end
+
+        subgraph "Procesamiento"
+            KC[Kafka Connect]
+            KS[Kafka Streams]
+        end
+
+        subgraph "Almacenamiento"
+            TS[(TimescaleDB)]
+        end
+    end
+
+    subgraph "Monitoreo"
+        M1[Grafana]
+        M2[Alertas]
+    end
+
+    S1 & S2 --> G1
+    S3 & Sn --> G2
+    G1 & G2 & Gn -->|MQTT| K1 & K2 & K3
+ 

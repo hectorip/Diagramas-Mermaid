@@ -1,0 +1,76 @@
+flowchart TB
+    subgraph Canales ["Canales de Acceso"]
+        APP["Banca Móvil"]
+        WEB["Banca Web"]
+        ATM["Red de ATMs"]
+        POS["Puntos de Venta"]
+        BRANCH["Sucursales"]
+    end
+
+    subgraph CORE ["Core Bancario"]
+        direction TB
+        ACCOUNTS["Gestión de Cuentas"]
+        TRANS["Procesamiento de Transacciones"]
+        CUSTOMERS["Gestión de Clientes"]
+        PRODUCTS["Gestión de Productos"]
+        ACCOUNTING["Contabilidad"]
+    end
+
+    subgraph External ["Sistemas Externos"]
+        SWIFT["SWIFT"]
+        ACH["Cámara de Compensación"]
+        CREDIT["Burós de Crédito"]
+        REGULATORS["Reguladores"]
+    end
+
+    subgraph Support ["Sistemas de Soporte"]
+        CRM["CRM"]
+        RISK["Gestión de Riesgo"]
+        AML["Anti Lavado de Dinero"]
+        TREASURY["Tesorería"]
+        REPORTING["Reportería"]
+    end
+
+    API["API Gateway / ESB"]
+
+    %% Conexiones desde Canales
+    APP --> API
+    WEB --> API
+    ATM --> API
+    POS --> API
+    BRANCH --> API
+
+    %% Conexiones hacia Core
+    API --> CORE
+
+    %% Conexiones internas del Core
+    ACCOUNTS <--> TRANS
+    TRANS <--> CUSTOMERS
+    CUSTOMERS <--> PRODUCTS
+    ACCOUNTS <--> ACCOUNTING
+
+    %% Conexiones con Sistemas Externos
+    CORE <--> SWIFT
+    CORE <--> ACH
+    CORE <--> CREDIT
+    CORE <--> REGULATORS
+
+    %% Conexiones con Sistemas de Soporte
+    CORE <--> CRM
+    CORE <--> RISK
+    CORE <--> AML
+    CORE <--> TREASURY
+    CORE <--> REPORTING
+
+    %% Estilos
+    classDef channel fill:#e1f5fe,stroke:#01579b
+    classDef core fill:#e8f5e9,stroke:#2e7d32
+    classDef external fill:#fff3e0,stroke:#ef6c00
+    classDef support fill:#f3e5f5,stroke:#7b1fa2
+    classDef gateway fill:#fafafa,stroke:#424242
+
+    class APP,WEB,ATM,POS,BRANCH channel
+    class ACCOUNTS,TRANS,CUSTOMERS,PRODUCTS,ACCOUNTING core
+    class SWIFT,ACH,CREDIT,REGULATORS external
+    class CRM,RISK,AML,TREASURY,REPORTING support
+    class API gateway
